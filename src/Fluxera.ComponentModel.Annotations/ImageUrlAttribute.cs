@@ -1,0 +1,28 @@
+﻿// ReSharper disable once CheckNamespace
+
+namespace System.ComponentModel.DataAnnotations
+{
+	using JetBrains.Annotations;
+
+	[PublicAPI]
+	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
+	public sealed class ImageUrlAttribute : DataTypeAttribute
+	{
+		public ImageUrlAttribute() : base(DataType.ImageUrl)
+		{
+		}
+
+		public override bool IsValid(object? value)
+		{
+			if(value == null)
+			{
+				return true;
+			}
+
+			return value is string valueAsString &&
+				(valueAsString.StartsWith("http://", StringComparison.OrdinalIgnoreCase)
+					|| valueAsString.StartsWith("https://", StringComparison.OrdinalIgnoreCase)
+					|| valueAsString.StartsWith("ftp://", StringComparison.OrdinalIgnoreCase));
+		}
+	}
+}
