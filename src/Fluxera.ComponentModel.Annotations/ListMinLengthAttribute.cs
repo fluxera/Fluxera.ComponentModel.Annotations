@@ -7,8 +7,11 @@
 	using Guards;
 	using JetBrains.Annotations;
 
+	/// <summary>
+	///		A validation attribute to check the minimum length of a list.
+	/// </summary>
 	[PublicAPI]
-	[AttributeUsage(AttributeTargets.Property)]
+	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 	public sealed class ListMinLengthAttribute : ValidationAttribute
 	{
 		public ListMinLengthAttribute(int minimumLength)

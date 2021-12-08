@@ -5,6 +5,9 @@
 	using Guards;
 	using JetBrains.Annotations;
 
+	/// <summary>
+	///		A validation that checks if the annotated property contains the given check value.
+	/// </summary>
 	[PublicAPI]
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 	public sealed class ContainsAttribute : ValidationAttribute

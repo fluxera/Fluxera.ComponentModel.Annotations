@@ -4,6 +4,9 @@ namespace System.ComponentModel.DataAnnotations
 {
 	using JetBrains.Annotations;
 
+	/// <summary>
+	///		A data-type attribute to signal that the values comes from a selection of values.
+	/// </summary>
 	[PublicAPI]
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
 	public sealed class SelectAttribute : DataTypeAttribute

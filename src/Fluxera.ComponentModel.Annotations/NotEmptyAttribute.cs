@@ -6,11 +6,11 @@
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///     Checks if an enumerable contains at least one element.
+	///     A validation attribute to check if an enumerable contains at least one element.
 	/// </summary>
 	/// <seealso cref="ValidationAttribute" />
 	[PublicAPI]
-	[AttributeUsage(AttributeTargets.Property)]
+	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 	public class NotEmptyAttribute : ValidationAttribute
 	{
 		public override bool IsValid(object value)

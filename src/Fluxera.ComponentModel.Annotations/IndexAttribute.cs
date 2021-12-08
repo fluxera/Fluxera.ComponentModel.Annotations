@@ -4,10 +4,9 @@ namespace Fluxera.ComponentModel.Annotations
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///     Property marker attribute to show an index of the entity. To create
-	///     the actual indices consult the underlying stores documentation.
+	///     An attribute to provide an index of the entity. <br/>
+	///		To create the actual indices consult the underlying stores documentation.
 	/// </summary>
-	/// <seealso cref="Attribute" />
 	[PublicAPI]
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 	public sealed class IndexAttribute : Attribute

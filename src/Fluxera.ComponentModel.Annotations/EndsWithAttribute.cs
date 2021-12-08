@@ -5,8 +5,11 @@
 	using Guards;
 	using JetBrains.Annotations;
 
+	/// <summary>
+	///		A validation attribute that checks if the value end with the given value.
+	/// </summary>
 	[PublicAPI]
-	[AttributeUsage(AttributeTargets.Property)]
+	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 	public sealed class EndsWithAttribute : ValidationAttribute
 	{
 		public EndsWithAttribute(string end,
@@ -26,8 +29,7 @@
 		{
 			if(value is string stringValue)
 			{
-				bool endsWith = !string.IsNullOrWhiteSpace(stringValue) &&
-					stringValue.EndsWith(this.End, this.StringComparison);
+				bool endsWith = !string.IsNullOrWhiteSpace(stringValue) && stringValue.EndsWith(this.End, this.StringComparison);
 				return endsWith;
 			}
 

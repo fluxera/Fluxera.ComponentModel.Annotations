@@ -7,8 +7,11 @@
 	using Guards;
 	using JetBrains.Annotations;
 
+	/// <summary>
+	///		A validation attribute to check the length of a list.
+	/// </summary>
 	[PublicAPI]
-	[AttributeUsage(AttributeTargets.Property)]
+	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 	public sealed class ListLengthAttribute : ValidationAttribute
 	{
 		public ListLengthAttribute(int maximumLength)

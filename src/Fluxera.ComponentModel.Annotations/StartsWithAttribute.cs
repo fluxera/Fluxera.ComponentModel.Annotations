@@ -5,8 +5,11 @@
 	using Guards;
 	using JetBrains.Annotations;
 
+	/// <summary>
+	///		A validation attribute that checks if the value starts with the given value.
+	/// </summary>
 	[PublicAPI]
-	[AttributeUsage(AttributeTargets.Property)]
+	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 	public sealed class StartsWithAttribute : ValidationAttribute
 	{
 		public StartsWithAttribute(string start,

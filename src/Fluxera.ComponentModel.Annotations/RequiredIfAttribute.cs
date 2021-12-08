@@ -6,10 +6,13 @@
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///     http://stackoverflow.com/questions/7390902/requiredif-conditional-validation-attribute
+	///		A validation attribute that checks if the value is required when a condition is met.
 	/// </summary>
+	/// <remarks>
+	///     http://stackoverflow.com/questions/7390902/requiredif-conditional-validation-attribute
+	/// </remarks>
 	[PublicAPI]
-	[AttributeUsage(AttributeTargets.Property)]
+	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 	public sealed class RequiredIfAttribute : RequiredAttribute
 	{
 		private readonly object[] desiredValues;

@@ -4,6 +4,9 @@ namespace System.ComponentModel.DataAnnotations
 {
 	using JetBrains.Annotations;
 
+	/// <summary>
+	///		A data-type attribute for image-url values.
+	/// </summary>
 	[PublicAPI]
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
 	public sealed class ImageUrlAttribute : DataTypeAttribute

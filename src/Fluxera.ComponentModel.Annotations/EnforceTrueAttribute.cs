@@ -5,10 +5,13 @@
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///     http://stackoverflow.com/questions/4730183/mvc-model-require-true/9036075#9036075
+	///		A validation attribute that checks if the value is <c>true</c>.
 	/// </summary>
+	/// <remarks>
+	///     http://stackoverflow.com/questions/4730183/mvc-model-require-true/9036075#9036075
+	/// </remarks>
 	[PublicAPI]
-	[AttributeUsage(AttributeTargets.Property)]
+	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 	public sealed class EnforceTrueAttribute : ValidationAttribute
 	{
 		public override bool IsValid(object value)
