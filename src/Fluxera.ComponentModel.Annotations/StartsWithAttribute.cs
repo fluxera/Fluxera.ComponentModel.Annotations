@@ -2,18 +2,22 @@
 {
 	using System;
 	using System.ComponentModel.DataAnnotations;
-	using Guards;
+	using Fluxera.Guards;
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///		A validation attribute that checks if the value starts with the given value.
+	///     A validation attribute that checks if the value starts with the given value.
 	/// </summary>
 	[PublicAPI]
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 	public sealed class StartsWithAttribute : ValidationAttribute
 	{
-		public StartsWithAttribute(string start,
-			StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+		/// <summary>
+		///     Creates a new instance of the <see cref="StartsWithAttribute" /> type.
+		/// </summary>
+		/// <param name="start"></param>
+		/// <param name="stringComparison"></param>
+		public StartsWithAttribute(string start, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
 		{
 			Guard.Against.NullOrEmpty(start, nameof(start));
 
@@ -21,16 +25,17 @@
 			this.StringComparison = stringComparison;
 		}
 
+		/// <summary>
+		///     Gets the starting string to check for.
+		/// </summary>
 		public string Start { get; }
 
+		/// <summary>
+		///     Gets the <see cref="StringComparison" /> to use.
+		/// </summary>
 		public StringComparison StringComparison { get; }
 
-		//public override string FormatErrorMessage(string name)
-		//{
-		//    var errorMessage = this.ErrorMessage.FormatInvariantWith(name, this.Start);
-		//    return errorMessage;
-		//}
-
+		/// <inheritdoc />
 		public override bool IsValid(object value)
 		{
 			if(value is string stringValue)

@@ -2,11 +2,11 @@
 {
 	using System;
 	using System.ComponentModel.DataAnnotations;
-	using Guards;
+	using Fluxera.Guards;
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///		A validation attribute that checks if the value is required when a condition is met.
+	///     A validation attribute that checks if the value is required when a condition is met.
 	/// </summary>
 	/// <remarks>
 	///     http://stackoverflow.com/questions/7390902/requiredif-conditional-validation-attribute
@@ -18,7 +18,11 @@
 		private readonly object[] desiredValues;
 		private readonly string propertyName;
 
-		// Or-ed together
+		/// <summary>
+		///     Creates a new instance of the <see cref="RequiredIfAttribute" /> type.
+		/// </summary>
+		/// <param name="propertyName"></param>
+		/// <param name="desiredValues">The desired values are OR-ed when evaluating.</param>
 		public RequiredIfAttribute([InvokerParameterName] string propertyName, params object[] desiredValues)
 		{
 			Guard.Against.NullOrWhiteSpace(propertyName, nameof(propertyName));
@@ -28,7 +32,8 @@
 			this.desiredValues = desiredValues;
 		}
 
-		protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+		/// <inheritdoc />
+		protected override ValidationResult IsValid(object instance, ValidationContext validationContext)
 		{
 			Type type = validationContext.ObjectInstance.GetType();
 			object propertyValue = type.GetProperty(this.propertyName)?.GetValue(validationContext.ObjectInstance, null);
@@ -37,7 +42,7 @@
 			{
 				if(propertyValue?.ToString() == desiredValue?.ToString())
 				{
-					ValidationResult validationResult = base.IsValid(value, validationContext);
+					ValidationResult validationResult = base.IsValid(instance, validationContext);
 					return validationResult;
 				}
 			}
@@ -45,10 +50,10 @@
 			return ValidationResult.Success;
 		}
 
-		public bool IsRequired(object objectInstance)
+		public bool IsRequired(object instance)
 		{
-			Type type = objectInstance.GetType();
-			object propertyValue = type.GetProperty(this.propertyName)?.GetValue(objectInstance, null);
+			Type type = instance.GetType();
+			object propertyValue = type.GetProperty(this.propertyName)?.GetValue(instance, null);
 
 			bool isRequired = false;
 

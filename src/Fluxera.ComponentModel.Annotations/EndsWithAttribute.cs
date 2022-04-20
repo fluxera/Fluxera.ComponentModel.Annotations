@@ -2,18 +2,22 @@
 {
 	using System;
 	using System.ComponentModel.DataAnnotations;
-	using Guards;
+	using Fluxera.Guards;
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///		A validation attribute that checks if the value end with the given value.
+	///     A validation attribute that checks if the value end with the given value.
 	/// </summary>
 	[PublicAPI]
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 	public sealed class EndsWithAttribute : ValidationAttribute
 	{
-		public EndsWithAttribute(string end,
-			StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+		/// <summary>
+		///     Creates a new instance of the <see cref="EndsWithAttribute" /> type.
+		/// </summary>
+		/// <param name="end"></param>
+		/// <param name="stringComparison"></param>
+		public EndsWithAttribute(string end, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
 		{
 			Guard.Against.NullOrEmpty(end, nameof(end));
 
@@ -21,10 +25,17 @@
 			this.StringComparison = stringComparison;
 		}
 
+		/// <summary>
+		///     Gets the ending string to check for.
+		/// </summary>
 		public string End { get; }
 
+		/// <summary>
+		///     Gets the <see cref="StringComparison" /> to use.
+		/// </summary>
 		public StringComparison StringComparison { get; }
 
+		/// <inheritdoc />
 		public override bool IsValid(object value)
 		{
 			if(value is string stringValue)
