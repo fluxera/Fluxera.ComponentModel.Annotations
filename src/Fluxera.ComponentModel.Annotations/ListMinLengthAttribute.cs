@@ -4,16 +4,20 @@
 	using System.Collections;
 	using System.ComponentModel.DataAnnotations;
 	using System.Linq;
-	using Guards;
+	using Fluxera.Guards;
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///		A validation attribute to check the minimum length of a list.
+	///     A validation attribute to check the minimum length of a list.
 	/// </summary>
 	[PublicAPI]
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 	public sealed class ListMinLengthAttribute : ValidationAttribute
 	{
+		/// <summary>
+		///     Creates a new instance of the <see cref="ListMinLengthAttribute" /> type.
+		/// </summary>
+		/// <param name="minimumLength"></param>
 		public ListMinLengthAttribute(int minimumLength)
 		{
 			Guard.Against.Negative(minimumLength, nameof(minimumLength));
@@ -26,6 +30,7 @@
 		/// </summary>
 		private int MinimumLength { get; }
 
+		/// <inheritdoc />
 		public override bool IsValid(object value)
 		{
 			if(value is IEnumerable items)

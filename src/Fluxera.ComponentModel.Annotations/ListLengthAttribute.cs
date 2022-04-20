@@ -4,16 +4,20 @@
 	using System.Collections;
 	using System.ComponentModel.DataAnnotations;
 	using System.Linq;
-	using Guards;
+	using Fluxera.Guards;
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///		A validation attribute to check the length of a list.
+	///     A validation attribute to check the length of a list.
 	/// </summary>
 	[PublicAPI]
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 	public sealed class ListLengthAttribute : ValidationAttribute
 	{
+		/// <summary>
+		///     Creates a new instance of the <see cref="ListLengthAttribute" /> type.
+		/// </summary>
+		/// <param name="maximumLength"></param>
 		public ListLengthAttribute(int maximumLength)
 		{
 			Guard.Against.Negative(maximumLength, nameof(maximumLength));
@@ -31,6 +35,7 @@
 		/// </summary>
 		public int MinimumLength { get; set; }
 
+		/// <inheritdoc />
 		public override bool IsValid(object value)
 		{
 			if(value is IEnumerable items)

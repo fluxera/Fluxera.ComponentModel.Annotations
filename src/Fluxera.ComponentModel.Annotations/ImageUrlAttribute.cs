@@ -5,17 +5,19 @@ namespace System.ComponentModel.DataAnnotations
 	using JetBrains.Annotations;
 
 	/// <summary>
-	///		A data-type attribute for image-url values.
+	///     A data-type attribute for image-url values.
 	/// </summary>
 	[PublicAPI]
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
 	public sealed class ImageUrlAttribute : DataTypeAttribute
 	{
+		/// <inheritdoc />
 		public ImageUrlAttribute() : base(DataType.ImageUrl)
 		{
 		}
 
-		public override bool IsValid(object? value)
+		/// <inheritdoc />
+		public override bool IsValid(object value)
 		{
 			if(value == null)
 			{

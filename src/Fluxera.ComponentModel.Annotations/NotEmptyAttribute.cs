@@ -13,6 +13,7 @@
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 	public class NotEmptyAttribute : ValidationAttribute
 	{
+		/// <inheritdoc />
 		public override bool IsValid(object value)
 		{
 			if(value is IEnumerable items)
