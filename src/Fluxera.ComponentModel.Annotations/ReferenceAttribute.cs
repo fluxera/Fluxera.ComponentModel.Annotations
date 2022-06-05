@@ -17,30 +17,30 @@
 		/// <param name="referencedEntityType"></param>
 		public ReferenceAttribute(Type referencedEntityType)
 		{
-			Guard.Against.Null(referencedEntityType, nameof(referencedEntityType));
+			Guard.Against.Null(referencedEntityType);
 
-			this.ReferencedEntityType = referencedEntityType;
+			this.ReferencedEntityName = referencedEntityType.Name;
 		}
 
 		/// <summary>
 		///     Creates a new instance of the <see cref="ReferenceAttribute" /> type.
 		/// </summary>
-		/// <param name="referencedTypeName"></param>
-		public ReferenceAttribute(string referencedTypeName)
+		/// <param name="referencedEntityName"></param>
+		public ReferenceAttribute(string referencedEntityName)
 		{
-			Guard.Against.NullOrWhiteSpace(referencedTypeName, nameof(referencedTypeName));
+			Guard.Against.NullOrWhiteSpace(referencedEntityName);
 
-			this.ReferencedTypeName = referencedTypeName;
+			this.ReferencedEntityName = referencedEntityName;
 		}
 
 		/// <summary>
-		///     Gets the type of the referenced entity.
+		///     Gets the name of the referenced entity.
 		/// </summary>
-		public Type ReferencedEntityType { get; }
+		public string ReferencedEntityName { get; }
 
 		/// <summary>
-		///     Gets the name of the type of the referenced entity.
+		///     Gets or sets the (optional) name of the storage (f.e. the name of a database or file).
 		/// </summary>
-		public string ReferencedTypeName { get; }
+		public string StorageName { get; set; }
 	}
 }
