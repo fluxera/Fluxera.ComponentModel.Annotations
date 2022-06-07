@@ -10,11 +10,31 @@
 	public class RequiredIfAttributeTests
 	{
 		[Test]
+		public void ShouldBeRequired()
+		{
+			// Arrange
+			TestClass obj = new TestClass
+			{
+				RequiredIfBoolean = true,
+				RequiredIfBooleanString = null
+			};
+
+			// Act
+			RequiredIfAttribute requiredAttribute = obj.GetType().GetProperty(nameof(TestClass.RequiredIfBooleanString)).GetCustomAttribute<RequiredIfAttribute>();
+			bool result = requiredAttribute.IsRequired(obj);
+
+			// Assert
+			result.Should().BeTrue();
+		}
+
+		[Test]
 		public void ShouldHaveValidationError_Boolean()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.RequiredIfBooleanString = null;
+			TestClass obj = new TestClass
+			{
+				RequiredIfBooleanString = null
+			};
 
 			// Act
 			ICollection<ValidationResult> results = new List<ValidationResult>();
@@ -29,8 +49,10 @@
 		public void ShouldHaveValidationError_Enum()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.RequiredIfEnumString = null;
+			TestClass obj = new TestClass
+			{
+				RequiredIfEnumString = null
+			};
 
 			// Act
 			ICollection<ValidationResult> results = new List<ValidationResult>();
@@ -42,11 +64,31 @@
 		}
 
 		[Test]
+		public void ShouldNotBeRequired()
+		{
+			// Arrange
+			TestClass obj = new TestClass
+			{
+				RequiredIfBoolean = false,
+				RequiredIfBooleanString = null
+			};
+
+			// Act
+			RequiredIfAttribute requiredAttribute = obj.GetType().GetProperty(nameof(TestClass.RequiredIfBooleanString)).GetCustomAttribute<RequiredIfAttribute>();
+			bool result = requiredAttribute.IsRequired(obj);
+
+			// Assert
+			result.Should().BeFalse();
+		}
+
+		[Test]
 		public void ShouldNotHaveValidationError_Boolean()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.RequiredIfBooleanString = "Hallo";
+			TestClass obj = new TestClass
+			{
+				RequiredIfBooleanString = "Hallo"
+			};
 
 			// Act
 			ICollection<ValidationResult> results = new List<ValidationResult>();
@@ -61,8 +103,10 @@
 		public void ShouldNotHaveValidationError_Enum()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.RequiredIfEnumString = "Hallo";
+			TestClass obj = new TestClass
+			{
+				RequiredIfEnumString = "Hallo"
+			};
 
 			// Act
 			ICollection<ValidationResult> results = new List<ValidationResult>();
@@ -71,38 +115,6 @@
 			// Assert
 			result.Should().BeTrue();
 			results.Count.Should().Be(0);
-		}
-
-		[Test]
-		public void ShouldNotBeRequired()
-		{
-			// Arrange
-			TestClass obj = new TestClass();
-			obj.RequiredIfBoolean = false;
-			obj.RequiredIfBooleanString = null;
-
-			// Act
-			RequiredIfAttribute requiredAttribute = obj.GetType().GetProperty(nameof(TestClass.RequiredIfBooleanString)).GetCustomAttribute<RequiredIfAttribute>();
-			bool result = requiredAttribute.IsRequired(obj);
-
-			// Assert
-			result.Should().BeFalse();
-		}
-
-		[Test]
-		public void ShouldBeRequired()
-		{
-			// Arrange
-			TestClass obj = new TestClass();
-			obj.RequiredIfBoolean = true;
-			obj.RequiredIfBooleanString = null;
-
-			// Act
-			RequiredIfAttribute requiredAttribute = obj.GetType().GetProperty(nameof(TestClass.RequiredIfBooleanString)).GetCustomAttribute<RequiredIfAttribute>();
-			bool result = requiredAttribute.IsRequired(obj);
-
-			// Assert
-			result.Should().BeTrue();
 		}
 
 		// TODO: Test more edge cases.

@@ -12,8 +12,10 @@
 		public void ShouldHaveValidationError()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.EndsWithString = "Welt, Hallo!";
+			TestClass obj = new TestClass
+			{
+				EndsWithString = "Welt, Hallo!"
+			};
 
 			// Act
 			ICollection<ValidationResult> results = new List<ValidationResult>();
@@ -28,8 +30,10 @@
 		public void ShouldNotHaveValidationError()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.EndsWithString = "Hallo Welt!";
+			TestClass obj = new TestClass
+			{
+				EndsWithString = "Hallo Welt!"
+			};
 
 			// Act
 			ICollection<ValidationResult> results = new List<ValidationResult>();

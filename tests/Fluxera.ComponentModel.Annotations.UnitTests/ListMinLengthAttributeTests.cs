@@ -12,8 +12,10 @@
 		public void ShouldHaveValidationError_TooLess()
 		{
 			// Arrange  
-			TestClass obj = new TestClass();
-			obj.ListMinLengthList = new List<object>();
+			TestClass obj = new TestClass
+			{
+				ListMinLengthList = new List<object>()
+			};
 			obj.ListMinLengthList.Add(new object());
 
 			// Act
@@ -29,8 +31,10 @@
 		public void ShouldNotHaveValidationError()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.ListMinLengthList = new List<object>();
+			TestClass obj = new TestClass
+			{
+				ListMinLengthList = new List<object>()
+			};
 			for(int i = 0; i < 10; i++)
 			{
 				obj.ListMinLengthList.Add(new object());

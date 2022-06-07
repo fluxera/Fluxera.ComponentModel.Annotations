@@ -12,8 +12,10 @@
 		public void ShouldHaveValidationError()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.StartsWithString = "Welt, Hallo!";
+			TestClass obj = new TestClass
+			{
+				StartsWithString = "Welt, Hallo!"
+			};
 
 			// Act
 			ICollection<ValidationResult> results = new List<ValidationResult>();
@@ -28,8 +30,10 @@
 		public void ShouldNotHaveValidationError()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.StartsWithString = "Hallo!";
+			TestClass obj = new TestClass
+			{
+				StartsWithString = "Hallo!"
+			};
 
 			// Act
 			ICollection<ValidationResult> results = new List<ValidationResult>();
