@@ -12,8 +12,10 @@
 		public void ShouldHaveValidationError()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.NotEmptyList = new List<object>();
+			TestClass obj = new TestClass
+			{
+				NotEmptyList = new List<object>()
+			};
 
 			// Act
 			ICollection<ValidationResult> results = new List<ValidationResult>();
@@ -28,8 +30,10 @@
 		public void ShouldNotHaveValidationError()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.NotEmptyList = new List<object>();
+			TestClass obj = new TestClass
+			{
+				NotEmptyList = new List<object>()
+			};
 			for(int i = 0; i < 10; i++)
 			{
 				obj.NotEmptyList.Add(new object());

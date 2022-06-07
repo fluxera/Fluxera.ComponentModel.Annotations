@@ -12,8 +12,10 @@
 		public void ShouldHaveValidationError()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.ContainsString = "Hallo";
+			TestClass obj = new TestClass
+			{
+				ContainsString = "Hallo"
+			};
 
 			// Act
 			ICollection<ValidationResult> results = new List<ValidationResult>();
@@ -28,8 +30,10 @@
 		public void ShouldNotHaveValidationError()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.ContainsString = "Hallo, Welt";
+			TestClass obj = new TestClass
+			{
+				ContainsString = "Hallo, Welt"
+			};
 
 			// Act
 			ICollection<ValidationResult> results = new List<ValidationResult>();

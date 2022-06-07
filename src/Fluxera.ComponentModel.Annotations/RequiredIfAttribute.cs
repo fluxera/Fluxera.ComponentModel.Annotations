@@ -50,6 +50,11 @@
 			return ValidationResult.Success;
 		}
 
+		/// <summary>
+		///     Evaluates the required flag for the given instance.
+		/// </summary>
+		/// <param name="instance"></param>
+		/// <returns></returns>
 		public bool IsRequired(object instance)
 		{
 			Type type = instance.GetType();

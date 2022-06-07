@@ -12,8 +12,10 @@
 		public void ShouldHaveValidationError_MinMax_TooLess()
 		{
 			// Arrange  
-			TestClass obj = new TestClass();
-			obj.ListLengthMinMaxList = new List<object>();
+			TestClass obj = new TestClass
+			{
+				ListLengthMinMaxList = new List<object>()
+			};
 			obj.ListLengthMinMaxList.Add(new object());
 
 			// Act
@@ -29,8 +31,10 @@
 		public void ShouldHaveValidationError_MinMax_TooMay()
 		{
 			// Arrange  
-			TestClass obj = new TestClass();
-			obj.ListLengthMinMaxList = new List<object>();
+			TestClass obj = new TestClass
+			{
+				ListLengthMinMaxList = new List<object>()
+			};
 			for(int i = 0; i < 11; i++)
 			{
 				obj.ListLengthMinMaxList.Add(new object());
@@ -49,8 +53,10 @@
 		public void ShouldHaveValidationError_OnlyMax_TooMany()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.ListLengthMaxList = new List<object>();
+			TestClass obj = new TestClass
+			{
+				ListLengthMaxList = new List<object>()
+			};
 			for(int i = 0; i < 11; i++)
 			{
 				obj.ListLengthMaxList.Add(new object());
@@ -69,8 +75,10 @@
 		public void ShouldNotHaveValidationError_MinMax()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.ListLengthMinMaxList = new List<object>();
+			TestClass obj = new TestClass
+			{
+				ListLengthMinMaxList = new List<object>()
+			};
 			for(int i = 0; i < 10; i++)
 			{
 				obj.ListLengthMinMaxList.Add(new object());
@@ -89,8 +97,10 @@
 		public void ShouldNotHaveValidationError_OnlyMax()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.ListLengthMaxList = new List<object>();
+			TestClass obj = new TestClass
+			{
+				ListLengthMaxList = new List<object>()
+			};
 			for(int i = 0; i < 10; i++)
 			{
 				obj.ListLengthMaxList.Add(new object());

@@ -12,8 +12,10 @@
 		public void ShouldHaveValidationError_TooMany()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.ListMaxLengthList = new List<object>();
+			TestClass obj = new TestClass
+			{
+				ListMaxLengthList = new List<object>()
+			};
 			for(int i = 0; i < 11; i++)
 			{
 				obj.ListMaxLengthList.Add(new object());
@@ -32,8 +34,10 @@
 		public void ShouldNotHaveValidationError()
 		{
 			// Arrange
-			TestClass obj = new TestClass();
-			obj.ListMaxLengthList = new List<object>();
+			TestClass obj = new TestClass
+			{
+				ListMaxLengthList = new List<object>()
+			};
 			for(int i = 0; i < 10; i++)
 			{
 				obj.ListMaxLengthList.Add(new object());
