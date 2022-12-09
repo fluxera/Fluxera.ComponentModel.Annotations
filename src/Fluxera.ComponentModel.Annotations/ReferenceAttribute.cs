@@ -9,7 +9,20 @@
 	/// </summary>
 	[PublicAPI]
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
-	public sealed class ReferenceAttribute : Attribute
+	public sealed class ReferenceAttribute<T> : ReferenceAttribute where T : class
+	{
+		/// <inheritdoc />
+		public ReferenceAttribute() : base(typeof(T))
+		{
+		}
+	}
+
+	/// <summary>
+	///     An attribute to signal potential data stores that this property should be stored as database reference.
+	/// </summary>
+	[PublicAPI]
+	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
+	public class ReferenceAttribute : Attribute
 	{
 		/// <summary>
 		///     Creates a new instance of the <see cref="ReferenceAttribute" /> type.

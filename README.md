@@ -1,4 +1,4 @@
-[![Build Status](https://dev.azure.com/fluxera/Foundation/_apis/build/status/GitHub/fluxera.Fluxera.ComponentModel.Annotations?branchName=main)](https://dev.azure.com/fluxera/Foundation/_build/latest?definitionId=61&branchName=main)
+[![Build Status](https://dev.azure.com/fluxera/Foundation/_apis/build/status/GitHub/fluxera.Fluxera.ComponentModel.Annotations?branchName=main&stageName=BuildAndTest)](https://dev.azure.com/fluxera/Foundation/_build/latest?definitionId=78&branchName=main)
 
 # Fluxera.ComponentModel.Annotations
 A collection of custom data annotations.
